@@ -6,11 +6,11 @@ from typing import Optional
 
 
 trace_id_var: ContextVar[str] = ContextVar("trace_id", default="")
-logger = logging.getLogger("evoagent")
+logger = logging.getLogger("sentinel")
 
 
 class Observability:
-    def __init__(self, service_name: str = "evoagent", endpoint: str = ""):
+    def __init__(self, service_name: str = "sentinel", endpoint: str = ""):
         self.tracer = None
         try:
             from opentelemetry import trace

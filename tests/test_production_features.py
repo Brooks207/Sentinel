@@ -3,14 +3,14 @@ import tempfile
 import time
 import unittest
 
-from evoagent.auth import AuthManager
-from evoagent.harness import ReviewHarness
-from evoagent.reviewer import LocalRuleReviewer
-from evoagent.rollout import ReleaseManager
-from evoagent.service import ReviewService
-from evoagent.store import TaskStore
-from evoagent.task_queue import TaskQueue
-from evoagent.verifier import RepairVerifier
+from sentinel.auth import AuthManager
+from sentinel.harness import ReviewHarness
+from sentinel.reviewer import LocalRuleReviewer
+from sentinel.rollout import ReleaseManager
+from sentinel.service import ReviewService
+from sentinel.store import TaskStore
+from sentinel.task_queue import TaskQueue
+from sentinel.verifier import RepairVerifier
 
 
 DIFF = "--- a/a.py\n+++ b/a.py\n@@ -1 +1 @@\n-old\n+eval(data)\n"

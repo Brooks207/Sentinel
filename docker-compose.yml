@@ -2,13 +2,13 @@ services:
   postgres:
     image: postgres:16-alpine
     environment:
-      POSTGRES_DB: evoagent
-      POSTGRES_USER: evoagent
-      POSTGRES_PASSWORD: evoagent-local
+      POSTGRES_DB: sentinel
+      POSTGRES_USER: sentinel
+      POSTGRES_PASSWORD: sentinel-local
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U evoagent"]
+      test: ["CMD-SHELL", "pg_isready -U sentinel"]
       interval: 5s
       timeout: 3s
       retries: 15
@@ -24,20 +24,20 @@ services:
       timeout: 3s
       retries: 15
 
-  evoagent:
+  sentinel:
     build: .
     ports:
       - "8080:8080"
     environment:
-      EVOAGENT_HOST: 0.0.0.0
-      EVOAGENT_DATABASE_URL: postgresql://evoagent:evoagent-local@postgres:5432/evoagent
-      EVOAGENT_REDIS_URL: redis://redis:6379/0
-      EVOAGENT_ASYNC_WORKERS: 4
-      EVOAGENT_SKILLS_DIR: /app/skills
-      EVOAGENT_AUTH_REQUIRED: "true"
-      EVOAGENT_AUTH_SECRET: ${EVOAGENT_AUTH_SECRET:-local-only-change-this-secret-123456}
-      EVOAGENT_BOOTSTRAP_ADMIN_USERNAME: ${EVOAGENT_BOOTSTRAP_ADMIN_USERNAME:-admin}
-      EVOAGENT_BOOTSTRAP_ADMIN_PASSWORD: ${EVOAGENT_BOOTSTRAP_ADMIN_PASSWORD:-evoagent-local-admin}
+      SENTINEL_HOST: 0.0.0.0
+      SENTINEL_DATABASE_URL: postgresql://sentinel:sentinel-local@postgres:5432/sentinel
+      SENTINEL_REDIS_URL: redis://redis:6379/0
+      SENTINEL_ASYNC_WORKERS: 4
+      SENTINEL_SKILLS_DIR: /app/skills
+      SENTINEL_AUTH_REQUIRED: "true"
+      SENTINEL_AUTH_SECRET: ${SENTINEL_AUTH_SECRET:-local-only-change-this-secret-123456}
+      SENTINEL_BOOTSTRAP_ADMIN_USERNAME: ${SENTINEL_BOOTSTRAP_ADMIN_USERNAME:-admin}
+      SENTINEL_BOOTSTRAP_ADMIN_PASSWORD: ${SENTINEL_BOOTSTRAP_ADMIN_PASSWORD:-sentinel-local-admin}
     env_file:
       - path: .env
         required: false

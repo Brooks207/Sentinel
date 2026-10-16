@@ -3,10 +3,10 @@ import os
 import tempfile
 import unittest
 
-from evoagent.agentic_core import AgenticReviewer
-from evoagent.diff_parser import parse_unified_diff
-from evoagent.memory import MemoryManager
-from evoagent.store import TaskStore
+from sentinel.agentic_core import AgenticReviewer
+from sentinel.diff_parser import parse_unified_diff
+from sentinel.memory import MemoryManager
+from sentinel.store import TaskStore
 
 
 DIFF = "--- a/app.py\n+++ b/app.py\n@@ -1 +1 @@\n-old\n+eval(user_input)\n"

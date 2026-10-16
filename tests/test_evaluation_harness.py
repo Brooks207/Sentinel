@@ -2,14 +2,14 @@ import os
 import tempfile
 import unittest
 
-from evoagent.evaluation_experiments import load_controlled_pr_cases
-from evoagent.evolution import RegressionEvaluator
-from evoagent.evaluation_harness import (
+from sentinel.evaluation_experiments import load_controlled_pr_cases
+from sentinel.evolution import RegressionEvaluator
+from sentinel.evaluation_harness import (
     dataset_fingerprint,
     load_jsonl,
     one_to_one_match,
 )
-from evoagent.models import Finding, Severity
+from sentinel.models import Finding, Severity
 
 
 class EndToEndEvaluationTests(unittest.TestCase):

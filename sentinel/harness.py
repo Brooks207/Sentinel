@@ -1,4 +1,4 @@
-"""Checkpointed review workflow powered by EvoAgent's own runtime."""
+"""Checkpointed review workflow powered by Sentinel's own runtime."""
 import threading
 from typing import Any, Dict, Optional, TypedDict
 
@@ -47,7 +47,7 @@ class ReviewHarness:
         self.timeout_seconds = timeout_seconds
         self.node_retries = node_retries
         self.observability = observability
-        self.name = "evoagent-runtime"
+        self.name = "sentinel-runtime"
         self._ctx = threading.local()
         self.runtime = AgentRuntime(max_steps, timeout_seconds, node_retries)
 
